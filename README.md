@@ -1,5 +1,6 @@
 This repository contains the code for a prototype implementation for VizXP [link]() and the associated user study, as described in the paper.
 The results for the user study as well as supplementary material are also included in this repository.
+
 (**VizXP: A Visualization Framework for Conveying Explanations to Users in Model Reconciliation Problems**)
 
 # Usage
@@ -13,6 +14,7 @@ An internet connection is also required to load the libraries used to display th
 The prototype implementation has the following components:
 - Plan editor to allow people to create plans from a set of actions
 - Explanation Visualizer to show errors in plan
+
 The goal of the user study was to see if users performed better when using VizXP for explanations as opposed to text based explanations. 
 
 ## Types of visualizations:
