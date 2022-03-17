@@ -1,0 +1,5 @@
+Explanation >> l-airplane-has-precondition-airplane ?a\
+Explanation >> l-airplane-has-precondition-obj ?o\
+Explanation >> l-truck-has-precondition-in ?t ?l\
+Explanation >> l-truck-has-precondition-truck ?t\
+Explanation >> m-airplane-has-add-effect-in ?a ?l-to}

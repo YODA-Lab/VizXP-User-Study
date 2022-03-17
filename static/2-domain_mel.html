@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan Editor - Domain</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+    
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Planning
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container">
+  <h3>Domain: Logistics</h3>
+  <p >For the purpose of this study, we are going to use package transportation (logistics) as an example planning problem.</p>
+  <p ><b>Problem: </b>We want to transport a package from one location to another, using a combination of air and road transportation.</p>
+  <p><b>Domain:</b></p>
+  <ul>
+  <li >
+  <p >There are multiple <strong>Cities</strong>, each with multiple <strong>Locations</strong> inside them.</p>
+  </li>
+  <li >
+  <p ><strong>Trucks</strong> are ground based transportation, that can move between locations within a city, but they cannot move between cities. </p>
+  <li>
+  <p><b> Airplanes </b> are air based transportation that can move across cities.</p>
+   <li >
+  <p ><strong>Packages</strong> are objects that can be “loaded” onto trucks and airplanes and then moved to different locations.<br></p>
+</ul>
+
+  <p><b>Actions:</b></p>
+
+<p>All 6 available actions and the input parameters are shown in the table below.</p>
+<p >A typical planning problem for logistics needs to use these actions to go from a <strong>start state</strong> to a <strong>goal state</strong>. The start state represents the configuration of the locations and cities, in addition to specifying the number of trucks, airplanes and packages and their locations. The goal is to transport all packages from their initial state to their goal state.</p>
+
+
+  <p><b>Preconditions:</b></p>
+
+  <p>In order for actions to be executed, preconditions must be satisfied. The preconditions are listed in the table below</p>
+
+  <table class="table table-striped table-bordered">
+  <thead>
+  <tr>
+  <th>Action</th>
+  <th>Parameters</th>
+  <th>Preconditions</th>
+  <th>Definition</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>load-truck</td>
+  <td><code>package</code>, <code>truck</code>, <code>location</code></td>
+    <td>
+    <ul>
+      <li><code>truck</code> must be in <code>location</code>
+      <li><code>package</code> must be in <code>location</code>
+  </td>
+  <td>Load <code>package</code> on <code>truck</code> at <code>location</code></td>
+
+  </tr>
+
+  <tr>
+  <td>move-truck</td>
+  <td><code>truck</code>,<code>source location</code>, <code>destination location</code>, <code>city</code></td>
+  <td>
+    <ul>
+      <li><code>truck</code> must be in <code>source location</code>
+      <li><code>source location</code> and <code>destination location</code> must be in <code> city </code>
+  </td>
+  <td>Move <code>truck</code> from <code>source location</code> to <code>destination location</code> within <code>city</code></td>
+  </tr>
+
+  <tr>
+  <td>unload-truck</td>
+  <td><code>package</code>, <code>truck</code>, <code>location</code></td>
+    <td>
+    <ul>
+      <li><code>package</code> must be in <code>truck</code>
+      <li><code>truck</code>must be in <code>location</code></li>
+
+  </td>
+  <td>Unload <code>package</code> from <code>truck</code> at  <code>location</code></td>
+  </tr>
+  <tr>
+  <td>load-airplane</td>
+  <td><code>package</code>, <code>airplane</code>, <code>location</code></td>
+    <td>
+    <ul>
+      <li><code>airplane</code> must be in <code>location</code>
+      <li><code>package</code> must be in <code>location</code>
+  </td>
+  <td>Load <code>package</code> on <code>airplane</code> at <code>location</code></td>
+  </tr>
+
+  <tr>
+  <td>move-airplane</td>
+  <td><code>airplane</code>, <code>source location</code>, <code>destination location</code></td>
+     <td>
+    <ul>
+      <li><code>airplane</code> must be in <code>source location</code>
+  </td>
+  <td>Move <code>airplane</code> from <code>source location</code> to <code>destination location</code></td>
+  </tr>
+
+  <tr>
+  <td>unload-airplane</td>
+  <td><code>package</code>, <code>airplane</code>, <code>location</code></td>
+  <td>
+    <ul>
+      <li><code>package</code> must be in <code>airplane</code>
+      <li><code>airplane</code>must be in <code>location</code></li>
+
+  </td>
+  <td>Unload <code>package</code> from <code>airplane</code> at  <code>location</code></td>
+  </tr>
+  </tbody>
+  </table>
+<!--  -->
+  <a type="button" class="btn btn-primary edit2" id='next_btn' href='../3/' >Next</a>
+  <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../'>Prev</a>
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

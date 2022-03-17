@@ -1,0 +1,38 @@
+[
+    {"name": "None", "desc":""},
+    {"name": "load-airplane",
+        "desc":"Load package into airplane. Input: package, airplane, location" ,
+        "inputs":[{"name":"Package","type":"package"},
+            {"name":"Plane","type":"plane"},
+            {"name":"Location","type":"location"}]},
+    {"name": "load-truck", 
+        "desc":"Load package into truck. Input: package, truck, location", 
+        "inputs":[{"name":"Package","type":"package"},
+            {"name":"Truck","type":"truck"},
+            {"name":"Location","type":"location"}]},
+    {"name": "move-airplane", 
+        "desc":"Fly airplane from one point to another. Inputs: source,destination, plane", 
+        "inputs":[
+            {"name":"Plane","type":"plane"},
+            {"name":"Source","type":"place"},
+            {"name":"Destination","type":"place"}
+            ]},
+    {"name": "move-truck", 
+        "desc": "Drive truck from one point to another. Inputs: source, destination, truck", 
+        "inputs":[
+            {"name":"Truck","type":"truck"},
+            {"name":"Source","type":"place"},
+            {"name":"Destination","type":"place"},
+            {"name":"City","type":"city"}
+            ]},
+    {"name": "unload-airplane", 
+        "desc":"Unload package from airplane. Input: package, airplane, location", 
+        "inputs":[{"name":"Package","type":"package"},
+            {"name":"Plane","type":"plane"},
+            {"name":"Location","type":"location"}]},
+    {"name": "unload-truck", 
+        "desc":"Unload package from truck. Input: package, truck, location", 
+        "inputs":[{"name":"Package","type":"package"},
+            {"name":"Truck","type":"truck"},
+            {"name":"Location","type":"location"}]}
+]

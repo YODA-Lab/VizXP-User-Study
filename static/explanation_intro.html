@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explanation</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+    
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Evaluation
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container">
+    <img src="/static/help_images/robot2.jpg" alt="Rob" width="200"
+    height="200" style='float: left;'>
+    <p style='font-size: large;'> 
+        Hi. I'm K. I'll be evaluating your plan for correctness.
+        <br>
+        <br>
+
+        Oh! It looks like your plan isnt what I expected to see. Don't worry, it's not your fault as long as you're sure there weren't any red highlights when you submitted. <b>It appears that Rob gave you some wrong information</b>, which caused the error. There might be a bug in his code, but I can't be sure.
+        <br><br>
+        Anyway, here is the difference I've observed between the information I have and the information provided to you, and I've tried to present the explanation as briefly as possible. <text id='viz_text'>I've also provided some highlights to show you where the differences are. Use the visualization and interact with the highlighted regions to identify the issues.</text>
+        <br>
+        <br>
+        Go through the explanation provided to understand what went wrong and whether that explains to you why your plan might be infeasible. Answer the questions that follow after you've understood.
+        <br>
+        <br>
+        (This is the beginning of Task 2. Giving the correct answer/response will award you an additional $3.00)
+        
+    </p>
+
+  <a type="button" class="btn btn-primary edit2" id='next_btn' href='../explanation' >Next</a>
+</div>
+<script>
+    d3.json('../get_info').then(function(preload_data){
+        if(preload_data.viz_type=="text"){
+            // console.log("remove hub precondition")
+            d3.selectAll('#viz_text').remove()
+        }
+    })
+  </script>
+  <!-- <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../5/'>Prev</a> -->
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

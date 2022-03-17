@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan Editor</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script src='../static/js/jquery-sortable.js'></script>
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="../static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="../static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+
+    <!-- intro.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/intro.min.js" integrity="sha512-Y3bwrs/uUQhiNsD26Mpr5YvfG18EY0J+aNxYI7ZQPJlM9H+lElGpuh/JURVJR/NBE+p1JZ+sVE773Un4zQcagg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/introjs.min.css" integrity="sha512-fsq7ym+bMq7ecs277R2a3QDPxF+JIwNNnkPfj9rIKDUyqrbXDnICZj/cCLcP3bKh3+jsCBnBR7BZJShOmELL0Q==" crossorigin="anonymous" />
+
+
+
+</head>
+<body>
+
+    <div id ='header_big' class=" text-center header">
+        <h1>Task 2: Plan Correction
+            
+        <!-- <span class='edit2' >
+            <i class="material-icons">help</i>
+        </span> -->
+        <button type="button" class="btn btn-primary edit2" id='tut_button' data-toggle="modal" data-target="#tut_modal"
+        data-step = 1 data-intro = "You can begin making the plan now. If you feel like you need help, all the tutorials are available here.">HELP</button>
+
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-xs-5">
+
+            <form id="add_action_form" action="" method="post">
+                <!-- <h3>Add Action</h3> -->
+				<div class="form-group">
+                    <h4>
+                    <label for="add_action_layout">Add action:</label>
+                </h4>
+                    <div class="form-group" id="add_action_layout">
+                        <label>action:	</label>
+                        <select id="action_select" >
+                        </select>
+                        <p>
+                            <span id="action_description"></span>
+                        </p>
+                    <div id="input_selects"></div>
+                </div>
+
+			</form>
+            <button type="button" class="btn btn-primary" id="add_action_button" 
+                >
+                Add Action</button>
+            <p></p>
+
+        </div>
+        <!-- <a class='btn btn-primary' id='test_button' href='/test' >Test</a> -->
+        <!-- <button type="button" class="btn btn-primary" id='test_button' data-toggle="modal" data-target="#viz_modal"
+            >
+            Test
+        </button> -->
+        <button class='btn btn-primary' id='submit_button' data-toggle="modal" data-target='#submit_modal'>
+            Submit
+        </button>
+        <p>.</p>
+        <div>
+            <h4 ><b>Start state:</b></h4>
+                <p >2 cities: <code>city1</code>, <code>city2</code><br>
+                4 locations: <code>location1</code>, <code>location2</code>, <code>location3</code>, <code>location4</code></p>
+                <ul>
+                <li ><code>location1</code>, <code>location2</code> are in <code>city1</code></li>
+                <li ><code>location3</code>, <code>location4</code> are in <code>city2</code></li>
+                <li ><code>location1</code>, <code>location3</code> are hubs</li>
+                </ul>
+                <p >2 airplanes: <code>airplane1</code>, <code>airplane2</code></p>
+                <ul>
+                <li ><code>airplane1</code> is in <code>location3</code></li>
+                <li ><code>airplane2</code> is in <code>location1</code></li>
+                </ul>
+                <p >2 trucks: <code>truck1</code>, <code>truck2</code></p>
+                <ul>
+                <li ><code>truck1</code> is in <code>location4</code></li>
+                <li ><code>truck2</code> is in <code>location1</code></li>
+                </ul>
+                <p >1 package: <code>package1</code></p>
+                <ul>
+                <li ><code>package1</code> is in <code id='problem_change'>location3</code></li>
+                </ul>
+            <h4 ><b id="Goal_73">Goal:</b></h4>
+                <p ><code>package1</code> should be in <code>location2</code> i.e., in(<code>package1</code>, <code>location2</code>)</p>
+        </div>
+        
+    </div>
+
+    <div class="col-xs-7">
+        <div id="plan_preview" style="margin-top: 20px; overflow-y: scroll;height:320px">
+            <ol class='draglist' id='plan_preview_list'>
+
+            </ol>
+        </div>
+        <div id = 'this_is_buggy'>The section below shows the explanation information for your <b>OLD PLAN</b>. It does <b>not</b> show you errors in your current plan.
+        </div>
+        <div id='exp_area'>
+        <br>
+        <h4><b>Explanation</b></h4>
+        </div>
+        <div id='viz_div' style="margin-top: 20px; padding-left: 20px;height:350px; overflow-y: scroll;">
+
+          <svg id='exp_viz'>
+
+          </svg>
+          <p id='current_hover'></p>
+      </div>
+        <!-- <h4>TEST <a id="refresh"><i class="material-icons medium" >refresh</i></a> </h4>
+        <div id='viz_div' style="margin-top: 20px; padding-left: 20px;height:350px; overflow-y: scroll;">
+          <svg id='viz'>
+
+          </svg>
+          <p id='current_hover'></p>
+      </div> -->
+    </div>
+    <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="viz_modal" tabindex="-1" role="dialog" aria-labelledby="viz_ModalTitle" aria-hidden="true">
+    <div id='viz_modal_size' class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="viz_modal_title">Plan visualization</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id='viz_div'>
+            <!-- <svg id='viz'>
+
+            </svg>
+            <p id='current_hover'></p> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit modal -->
+  <div class="modal fade" id="submit_modal" tabindex="-1" role="dialog" aria-labelledby="submit_ModalTitle" aria-hidden="true">
+    <div id='submit_modal_size' class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="submit_modal_title">Submit Plan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id='submit_div'>
+            Make sure that there are no errors in your plan before submitting.
+            <br>
+            <p>Are you sure you want to submit? </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id='submit_confirm'>Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal for edit-->
+    <div class="modal fade" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="edit_ModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="edit_modal_title">Edit Action</h4>
+                <h5 id='edit_modal_name'></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id='edit_modal_div'>
+                <div class="form-group" id="edit_action_layout">
+                    <label>Action:	</label>
+                    <select id="edit_action_select">
+                    </select>
+                <div id="edit_input_selects"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id='edit_action_confirm'>Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- For the tutorials -->
+<div class="modal fade" id="tut_modal" tabindex="-1" role="dialog" aria-labelledby="edit_ModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="tut_modal_title">Help</h4>
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#menu_planning">Planning</a></li>
+                <li><a data-toggle="pill" href="#menu_domain">Domain</a></li>
+                <li><a data-toggle="pill" href="#menu_editor">Plan Editor</a></li>
+                <li><a data-toggle="pill" href="#menu_viz">Visualization</a></li>
+            </ul>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id='tut_modal_div'>
+
+            <div class="tab-content">
+            <div id="menu_planning" class="tab-pane fade in active">
+                <!-- <h3>HOME</h3> -->
+                <!-- <iframe src="../static/tutorial.html" title="description" width="100%" height="500">  </iframe> -->
+                <h2 ><a id="What_is_Planning_1"></a>What is Planning?</h2>
+                <h4 ><a id="Thinking_before_acting_2"></a>Thinking before acting!</h4>
+                <p>Classical planning is the task of coming up with a sequence of actions that will achieve a particular goal. Within the realm of AI, planning is mostly concerned with developing “agents” that can come up with such actions on their own.</p>
+                <p>In particular, a planning problem consists of an initial state (where we start in the environment), a goal state (where we want to go in the environment), and a set of actions that we can execute to transistion between states in the environment. The available set of actions are specific to each planning problem and are described in the <em>Domain</em> of the planning problem.</p>
+                <p>A solution to a planning problem, called a <em>plan</em>, is a sequence of actions, which when executed would allow us to transition from the initial states to the goal states. The cost of a plan is measured by its plan length, which is the number of actions it contains. The shortest plan (cost-minimal) for a given problem is called an <em>optimal</em> plan.</p>
+                <h2 ><a id="Components_of_a_Planning_Task_11"></a>Components of a Planning Task.</h2>
+                <p>Suppose we have a planning problem which involves telling a robot to pick up a box from a table. We will use this example to describe the components of a planning task:</p>
+                <ul>
+                <li><strong>Objects</strong>: Things in the world that interest us, e.g, <em>box B</em>, <em>table T</em>, <em>robot R</em></li>
+                <li><strong>Predicates</strong>: Properties of objects that we are interested in; Can be <em>True</em> or <em>False</em>.<br>
+                For example, <em>ontable(B, T)</em> could tell us that box <em>B</em> is on table <em>T</em>, and <em>free( R)</em> could tell us the robots hand is free</li>
+                <li><strong>Initial states</strong>: The states of the world that we start in. If initially the box is on the table and the robot’s hand is free, the initial state can be represented as a combination of <em>ontable(B, T)</em> and <em>free( R)</em>.</li>
+                <li><strong>Goal states</strong>: The states of the world that we want to reach. In the example, the goal state can be <em>holding(B, R)</em>. In other words, the box should be in the robot’s hand after the plan is executed.</li>
+                <li><strong>Actions</strong>: Ways of changing the state of the world. An action <em>Pick-up(B, T, R)</em> may be used to say that we want the robot <em>R</em> to pick up box <em>B</em> from table <em>T</em>.<br>
+                Each action comprises of the following conditions:<br>
+                i) <strong>Precondtions</strong>: States that have to be <em>True</em> in order to exectute the action. For <em>Pick-up(B,T,R)</em>, the box <em>B</em> should be on the table <em>T</em>, and the robot’s hand should be free. Hence, this action will have the preconditions <em>ontable(B, T)</em> and <em>free( R)</em>. Since these conditions are satisfied in the initial state, this action is possible.<br>
+                ii) <strong>Addition effects</strong>: States that become <em>True</em> after we execute the action. For <em>Pick-up(B,T,R)</em>, the action will result in <em>holding(B, R)</em> being <em>True</em> after the action is completed.<br>
+                iii) <strong>Deletion effects</strong>: States that become <em>False</em> after we execute the action. For <em>Pick-up(B,T,R)</em>, <em>ontable(B, T)</em> and <em>free( R)</em> will be <em>False</em> after the action is completed.</li>
+                </ul>
+                <p>Then, the <strong>plan</strong> for this problem would be just one step long: <em>P</em> = { <em>Pick-up(B, T, R)</em> }. The reason is that, the initial state satisfies the preconditions of action <em>Pick-up(B, T, R)</em>, thus allowing us to execute it. After executing <em>Pick-up(B, T, R)</em>, we end up at the state, <em>holding(B, R)</em>, which is the goal state.</p>
+                <p>In other more complicated problems, the plan may involve multiple steps, each acting upon the state after the previous action, to cumulatively result in the goal.</p>
+          
+            </div>
+            <div id="menu_domain" class="tab-pane fade">
+                  <!-- <h3>Menu 1</h3> -->
+                <iframe src="../static/tutorial2.html" title="description" width="100%" height="500">  </iframe>
+                <!-- <iframe src="../static/tutorial2_corrected.html" title="description" width="100%" height="500">  </iframe> -->
+
+            </div>
+            <div id="menu_editor" class="tab-pane fade">
+              <div id="myCarousel" class="carousel slide" data-interval='10000' data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                  <li data-target="#myCarousel" data-slide-to="3"></li>
+                  <li data-target="#myCarousel" data-slide-to="4"></li>
+                  <li data-target="#myCarousel" data-slide-to="5"></li>
+                  <li data-target="#myCarousel" data-slide-to="6"></li>
+                  <li data-target="#myCarousel" data-slide-to="7"></li>
+
+                </ol>
+              
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img src="../static/help_images/editor/0.png" alt="help image">
+                  </div>
+              
+                  <div class="item">
+                    <img src="../static/help_images/editor/1.png" alt="help image">
+                  </div>
+              
+                  <div class="item">
+                    <img src="../static/help_images/editor/2.png" alt="help image">
+                  </div>
+                  <div class="item">
+                    <img src="../static/help_images/editor/3.png" alt="help image">
+                  </div>
+                  <div class="item">
+                    <img src="../static/help_images/editor/4.png" alt="help image">
+                  </div>
+                  <div class="item">
+                    <img src="../static/help_images/editor/5.png" alt="help image">
+                  </div>
+                  <div class="item">
+                    <img src="../static/help_images/editor/6.png" alt="help image">
+                  </div>
+                  <div class="item">
+                    <img src="../static/help_images/editor/7.png" alt="help image">
+                  </div>
+                </div>
+              
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <div id="menu_viz" class="tab-pane fade">
+                <!-- <iframe src="../static/conductor_tutorial.html" title="description" width="100%" height="700">  </iframe> -->
+                <iframe src="../static/abstraction_tutorial.html" title="description" width="100%" height="550">  </iframe>
+
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+</div>
+<script type = "text/javascript" src="../static/js/correction.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

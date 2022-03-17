@@ -1,0 +1,5 @@
+{
+    "viz_type":"viz",
+    "domain" : "custom_logistics/agent.pddl",
+    "problem_file" : "custom_logistics/prob2.pddl"
+}

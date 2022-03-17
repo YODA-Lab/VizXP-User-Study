@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explanation</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script src='../static/js/jquery-sortable.js'></script>
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="../static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="../static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+
+    <!-- intro.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/intro.min.js" integrity="sha512-Y3bwrs/uUQhiNsD26Mpr5YvfG18EY0J+aNxYI7ZQPJlM9H+lElGpuh/JURVJR/NBE+p1JZ+sVE773Un4zQcagg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/3.0.1/introjs.min.css" integrity="sha512-fsq7ym+bMq7ecs277R2a3QDPxF+JIwNNnkPfj9rIKDUyqrbXDnICZj/cCLcP3bKh3+jsCBnBR7BZJShOmELL0Q==" crossorigin="anonymous" />
+
+
+
+</head>
+<body>
+
+    <div id ='header_big' class=" text-center header"> 
+        <!-- header"> -->
+        <h1>Task 2: Explanation
+            
+        <button type="button" class="btn btn-primary edit2" id='tut_button' data-toggle="modal" data-target="#tut_modal"
+        data-step = 1 data-intro = "You can find all the old tutorials and information here. Answer all the questions to finish.">HELP</button>    
+        </h1>
+        <p></p> 
+    </div>
+
+
+    <p class='container remove_for_text' style="background-color:greenyellow;">
+        <b>
+        Try hovering and clicking on highlighted areas to identify the cause of error.
+    </b>
+    </p>
+
+<div class="container">
+
+    <div class="row" id='vizs'>
+
+        <div id = "viz_div" class="col-sm-6" style="display:inline">
+            <h3>Your plan</h3>
+            <div id='user'>
+                <svg id='user_viz' width="100px">
+
+                </svg>
+            </div>
+        </div>
+
+        <div id = "exp_div" class="col-sm-6"  style="display:inline">
+            <h3>Explanation</h3>
+            <div id="agent" style='white-space: pre-line;'>
+                <!-- <svg id='agent_viz' width="100px">
+
+                </svg> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id='insights'>
+            <h3>Insights</h3>
+            <div class="user_intro" id="question0" >
+                Go through the explanation provided and figure out where Rob went wrong. 
+                <text class="remove_for_text">The highlighted areas in the visualization can also be clicked and hovered on.</text>
+                Use this information to understand the explanation, then proceed to the questions that follow.
+            </div>
+
+            <div class="user_question" id="question1" style="display:none">
+                <p><br>1. What caused the error(s) in your plan?</p>
+                    <input type="checkbox" id="user" name="error_cause" value="user">
+                    <label for="user">I made a mistake in my plan</label><br>
+                    <input type="checkbox" id="wrong_info" name="error_cause" value="wrong_info">
+                    <label for="wrong_info">Wrong information provided</label><br>
+                    <input type="checkbox" id="missing_info" name="error_cause" value="missing_info">
+                    <label for="missing_info">Missing information</label><br>
+                    <input type="checkbox" id="no_errors" name="error_cause" value="no_errors">
+                    <label for="missing_info">There were no errors in my plan</label>
+            </div>
+
+            <div  class="user_question" id="question2" style="display:none">
+            <p> <br>2. Given your plan and the explanation provided, why is your plan invalid? Please be as descriptive as possible.
+            </p>
+            <textarea id="q2_insights" name="paragraph_text" cols="50" rows="2"></textarea>
+            </div>
+
+            <div  class="user_question" id="question3" style="display:none">
+            <p> <br>3. Do you feel you understand what information was omitted/conveyed incorrectly by Rob? If yes, what was that information?</p>
+            <textarea id="q3_insights" name="paragraph_text" cols="50" rows="2"></textarea>
+            </div>
+
+
+
+            <div  class="user_question" id="question4" style="display:none">
+                <p> <br>4. Given that it is important to pay attention to understand explanation, we need you to type out "I am attentive" as the answer to this question?</p>
+                <textarea id="q_attention_insights" name="paragraph_text" cols="50" rows="2"></textarea>
+            </div>
+
+            <div  class="user_question" id="question5" style="display:none">
+                <p> <br>5. What are the corrections needed to your plan to make it achieve the goal, with the new information in mind?</p>
+                <textarea id="q5_insights" name="paragraph_text" cols="50" rows="2"></textarea>
+            </div>
+
+            <div  class="user_question" id="question6" style="display:none">
+                <p> <br>6. Where do you think the error in Rob's information was?</p>
+                <input type="checkbox" id="Action_error" name="domain" value="Action">
+                <label for="domain"> In the description of the actions and their preconditions</label><br>
+                <input type="checkbox" id="Problem_error" name="problem" value="Problem">
+                <label for="problem"> In the description of the problem (start state or goal state)</label><br>
+            </div>
+
+            <div class="user_question" id="question7" style="display:none">
+                <p> <br>7. <b>If applicable</b>, identify areas with wrong or missing <b>preconditions</b> by <b>clicking</b> on the corresponding region. <b> Double click</b> to unselect <br> <br></p>
+
+                  <table class="table table-striped table-bordered">
+                  <thead>
+                  <tr>
+                  <th>Action</th>
+                  <th>Parameters</th>
+                  <th>Preconditions</th>
+                  <!-- <th>Definition</th> -->
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  <td>load-truck</td>
+                  <td><code>package</code>, <code>truck</code>, <code>location</code></td>
+                    <td class="precondition" id="load-truck" value="load-truck">
+                    <ul>
+                      <li><code>truck</code> must be in <code>location</code>
+                      <li><code>package</code> must be in <code>location</code>
+                  </td>
+                  <!-- <td>Load <code>package</code> on <code>truck</code> at <code>location</code></td> -->
+                  </tr>
+
+                  <tr>
+                  <td>move-truck</td>
+                  <td><code>truck</code>,<code>source location</code>, <code>destination location</code>, <code>city</code></td>
+                  <td class="precondition" id="move-truck" value="move-truck">
+                    <ul>
+                      <li><code>truck</code> must be in <code>source location</code>
+                      <li><code>source location</code> and <code>destination location</code> must be in <code> city </code>
+                  </td>
+                  <!-- <td>Move <code>truck</code> from <code>source location</code> to <code>destination location</code> within <code>city</code></td> -->
+                  </tr>
+
+                  <tr>
+                  <td>unload-truck</td>
+                  <td><code>package</code>, <code>truck</code>, <code>location</code></td>
+                    <td class="precondition" id="unload-truck" value="unload-truck">
+                    <ul>
+                      <li><code>package</code> must be in <code>truck</code>
+                      <li><code>truck</code>must be in <code>location</code></li>
+
+                  </td>
+                  <!-- <td>Unload <code>package</code> from <code>truck</code> at  <code>location</code></td> -->
+                  </tr>
+
+                  <tr>
+                  <td>load-airplane</td>
+                  <td ><code>package</code>, <code>airplane</code>, <code>location</code></td>
+                  <td class="precondition" id="load-airplane" value="load-airplane">
+                    <ul>
+                      <li><code>airplane</code> must be in <code>location</code>
+                      <li><code>package</code> must be in <code>location</code>
+                  </td>
+                  <!-- <td>Load <code>package</code> on <code>airplane</code> at <code>location</code></td> -->
+                  </tr>
+
+                  <tr>
+                  <td>move-airplane</td>
+                  <td><code>airplane</code>, <code>source location</code>, <code>destination location</code></td>
+                     <td class="precondition" id="move-airplane" value="move-airplane">
+                    <ul>
+                      <li><code>airplane</code> must be in <code>source location</code>
+                      <li id="dom_change"><code>destination location</code> must be a hub
+                  </td>
+                  <!-- <td>Move <code>airplane</code> from <code>source location</code> to <code>destination location</code></td> -->
+                  </tr>
+
+                  <tr>
+                  <td>unload-airplane</td>
+                  <td><code>package</code>, <code>airplane</code>, <code>location</code></td>
+                  <td class="precondition" id="unload-airplane" value="unload-airplane">
+                    <ul>
+                      <li><code>package</code> must be in <code>airplane</code>
+                      <li><code>airplane</code>must be in <code>location</code></li>
+
+                  </td>
+                  <!-- <td>Unload <code>package</code> from <code>airplane</code> at  <code>location</code></td> -->
+                  </tr>
+                  </tbody>
+                  </table>
+
+            </div>
+
+            <div class="user_question" id="question8" style="display:none">
+                <p> <br>8. <b>If applicable</b>, identify areas with wrong or missing <b>start states</b> by <b>clicking</b> on the corresponding region. <b> Double click</b> to unselect <br> <br></p>
+                <h4 ><b>Start state:</b></h4>
+                    <p >2 cities: <code>city1</code>, <code>city2</code><br>
+                    4 locations: <code>location1</code>, <code>location2</code>, <code>location3</code>, <code>location4</code></p>
+                    <ul>
+                    <li class="start_state" id="loc-1" style="border:1px solid black"><code>location1</code>, <code>location2</code> are in <code>city1</code></li>
+                    <li class="start_state" id="loc-2" style="border:1px solid black"><code>location3</code>, <code>location4</code> are in <code>city2</code></li>
+                    <li class="start_state" id="loc-3" style="border:1px solid black"><code>location1</code>, <code>location3</code> are hubs</li>
+                    </ul>
+                    <p >2 airplanes: <code>airplane1</code>, <code>airplane2</code></p>
+                    <ul>
+                    <li class="start_state" id="airplane-1" style="border:1px solid black"><code>airplane1</code> is in <code>location3</code></li>
+                    <li class="start_state" id="airplane-2" style="border:1px solid black"><code>airplane2</code> is in <code>location1</code></li>
+                    </ul>
+                    <p >2 trucks: <code>truck1</code>, <code>truck2</code></p>
+                    <ul>
+                    <li class="start_state" id="truck-1" style="border:1px solid black"><code>truck1</code> is in <code>location4</code></li>
+                    <li class="start_state" id="truck-2" style="border:1px solid black"><code>truck2</code> is in <code>location1</code></li>
+                    </ul>
+                    <p >1 package: <code>package1</code></p>
+                    <ul>
+                    <li class="start_state" id="package-loc" style="border:1px solid black"><code>package1</code> is in <code id='problem_change'>location3</code></li>
+                    </ul>
+                <h4 ><b id="Goal_73">Goal:</b></h4>
+                <li class="start_state" id="goal-state" style="border:1px solid black"><code>package1</code> should be in <code>location2</code> i.e., in(<code>package1</code>, <code>location2</code>)</li>
+            </div>
+
+
+            <!-- <div class="user_question" id="question8" style="display:none">
+                <p><br>8. Demonstrate how to fix the error</p>
+
+                 <div id="plan_preview">
+                    <ol class='draglist' id='plan_preview_list'>
+                    </ol>
+                </div>
+
+                <select name="element1" id="insight_select1">
+                    <option value="package">package</option>
+                    <option value="truck">truck</option>
+                    <option value="location">location</option>
+                    <option value="hub">hub</option>
+                    <option value="city">city</option>
+                    <option value="source_location">source location</option>
+                    <option value="destination_location">destination location</option>
+                </select>
+
+                <select name="action" id="insight_select2">
+                    <option value="must_be_in">must be in</option>
+                    <option value="must_be_a">must be a</option>
+                    <option value="is_in">is in</option>
+                    <option value="is_in">is a</option>
+
+                </select> 
+                <select name="element2" id="insight_select3">
+                    <option value="package">package</option>
+                    <option value="truck">truck</option>
+                    <option value="location">location</option>
+                    <option value="hub">hub</option>
+                    <option value="city">city</option>
+                    <option value="source_location">source location</option>
+                    <option value="destination_location">destination location</option>
+                </select>
+
+                <button id="add_insight_button">Add</button>
+
+
+                <br><br><br><br>
+              <br><br>
+
+            </div>
+             -->
+            <a style="display:none"  type="button" class="btn btn-primary edit2"id='finish_btn'>Finish</a>
+
+            <a type="button" class="btn btn-primary edit2" id='start_btn_menu'>Start</a>
+            <a style="display:none" type="button" class="btn btn-primary edit2" id='next_btn_menu'>Next</a>
+            <a style="display:none"  type="button" class="btn btn-primary edit2" id='prev_btn_menu'>Prev</a>
+
+
+    </div>
+<!-- For the tutorials -->
+<div class="modal fade" id="tut_modal" tabindex="-1" role="dialog" aria-labelledby="edit_ModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="tut_modal_title">Help</h4>
+            <ul class="nav nav-pills">
+                <li class="active"><a data-toggle="pill" href="#menu_planning">Planning</a></li>
+                <li><a data-toggle="pill" href="#menu_domain">Domain</a></li>
+                <li><a data-toggle="pill" href="#menu_viz">Visualization</a></li>
+                <li><a data-toggle="pill" href="#menu_problem">Problem</a></li>
+            </ul>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" id='tut_modal_div'>
+
+            <div class="tab-content">
+            <div id="menu_planning" class="tab-pane fade in active">
+                <!-- <h3>HOME</h3> -->
+                <!-- <iframe src="../static/tutorial.html" title="description" width="100%" height="500">  </iframe> -->
+                <h2 ><a id="What_is_Planning_1"></a>What is Planning?</h2>
+                <h4 ><a id="Thinking_before_acting_2"></a>Thinking before acting!</h4>
+                <p>Classical planning is the task of coming up with a sequence of actions that will achieve a particular goal. Within the realm of AI, planning is mostly concerned with developing “agents” that can come up with such actions on their own.</p>
+                <p>In particular, a planning problem consists of an initial state (where we start in the environment), a goal state (where we want to go in the environment), and a set of actions that we can execute to transistion between states in the environment. The available set of actions are specific to each planning problem and are described in the <em>Domain</em> of the planning problem.</p>
+                <p>A solution to a planning problem, called a <em>plan</em>, is a sequence of actions, which when executed would allow us to transition from the initial states to the goal states. The cost of a plan is measured by its plan length, which is the number of actions it contains. The shortest plan (cost-minimal) for a given problem is called an <em>optimal</em> plan.</p>
+                <h2 ><a id="Components_of_a_Planning_Task_11"></a>Components of a Planning Task.</h2>
+                <p>Suppose we have a planning problem which involves telling a robot to pick up a box from a table. We will use this example to describe the components of a planning task:</p>
+                <ul>
+                <li><strong>Objects</strong>: Things in the world that interest us, e.g, <em>box B</em>, <em>table T</em>, <em>robot R</em></li>
+                <li><strong>Predicates</strong>: Properties of objects that we are interested in; Can be <em>True</em> or <em>False</em>.<br>
+                For example, <em>ontable(B, T)</em> could tell us that box <em>B</em> is on table <em>T</em>, and <em>free( R)</em> could tell us the robots hand is free</li>
+                <li><strong>Initial states</strong>: The states of the world that we start in. If initially the box is on the table and the robot’s hand is free, the initial state can be represented as a combination of <em>ontable(B, T)</em> and <em>free( R)</em>.</li>
+                <li><strong>Goal states</strong>: The states of the world that we want to reach. In the example, the goal state can be <em>holding(B, R)</em>. In other words, the box should be in the robot’s hand after the plan is executed.</li>
+                <li><strong>Actions</strong>: Ways of changing the state of the world. An action <em>Pick-up(B, T, R)</em> may be used to say that we want the robot <em>R</em> to pick up box <em>B</em> from table <em>T</em>.<br>
+                Each action comprises of the following conditions:<br>
+                i) <strong>Precondtions</strong>: States that have to be <em>True</em> in order to exectute the action. For <em>Pick-up(B,T,R)</em>, the box <em>B</em> should be on the table <em>T</em>, and the robot’s hand should be free. Hence, this action will have the preconditions <em>ontable(B, T)</em> and <em>free( R)</em>. Since these conditions are satisfied in the initial state, this action is possible.<br>
+                ii) <strong>Addition effects</strong>: States that become <em>True</em> after we execute the action. For <em>Pick-up(B,T,R)</em>, the action will result in <em>holding(B, R)</em> being <em>True</em> after the action is completed.<br>
+                iii) <strong>Deletion effects</strong>: States that become <em>False</em> after we execute the action. For <em>Pick-up(B,T,R)</em>, <em>ontable(B, T)</em> and <em>free( R)</em> will be <em>False</em> after the action is completed.</li>
+                </ul>
+                <p>Then, the <strong>plan</strong> for this problem would be just one step long: <em>P</em> = { <em>Pick-up(B, T, R)</em> }. The reason is that, the initial state satisfies the preconditions of action <em>Pick-up(B, T, R)</em>, thus allowing us to execute it. After executing <em>Pick-up(B, T, R)</em>, we end up at the state, <em>holding(B, R)</em>, which is the goal state.</p>
+                <p>In other more complicated problems, the plan may involve multiple steps, each acting upon the state after the previous action, to cumulatively result in the goal.</p>
+          
+            </div>
+            <div id="menu_domain" class="tab-pane fade">
+                  <!-- <h3>Menu 1</h3> -->
+                <iframe src="../static/tutorial2.html" title="description" width="100%" height="500">  </iframe>
+
+            </div>
+            <div id="menu_viz" class="tab-pane fade">
+                <!-- <iframe src="../static/conductor_tutorial.html" title="description" width="100%" height="700">  </iframe> -->
+                <iframe src="../static/abstraction_tutorial.html" title="description" width="100%" height="550">  </iframe>
+
+            </div>
+            <div id="menu_problem" class="tab-pane fade">
+                <p >Below, you are given the description for the logistics problem that was given to you.</p>
+                <h3  ><a id="Start_state_63"></a>Start state:</h3>
+                <p >2 cities: <code>city1</code>, <code>city2</code><br>
+                4 locations: <code>location1</code>, <code>location2</code>, <code>location3</code>, <code>location4</code></p>
+                <ul>
+                <li ><code>location1</code>, <code>location2</code> are in <code>city1</code></li>
+                <li ><code>location3</code>, <code>location4</code> are in <code>city2</code></li>
+                <li ><code>location1</code>, <code>location3</code> are hubs</li>
+                </ul>
+                <p >2 airplanes: <code>airplane1</code>, <code>airplane2</code></p>
+                <ul>
+                <li ><code>airplane1</code> is in <code>location3</code></li>
+                <li ><code>airplane2</code> is in <code>location1</code></li>
+                </ul>
+                <p >2 trucks: <code>truck1</code>, <code>truck2</code></p>
+                <ul>
+                <li ><code>truck1</code> is in <code>location4</code></li>
+                <li ><code>truck2</code> is in <code>location1</code></li>
+                </ul>
+                <p >1 package: <code>package1</code></p>
+                <ul>
+                <li ><code>package1</code> is in <code id="problem_change">location3</code></li>
+                </ul>
+                <h3  ><a id="Goal_81"></a>Goal:</h3>
+                <p >Send <code>package1</code> to <code>location2</code></p>
+            </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        </div>
+    </div>
+</div>
+<!--           <a type="button" class="btn btn-primary edit2" id='next_btn_menu' href='' >Next</a>
+ -->
+<script>
+dict_insights={}
+
+d3.selectAll("#finish_btn").on("click",function(){
+  dict_insights['q1_insights']=document.querySelector('input[name="error_cause"]:checked').value; //q1
+  dict_insights['q2_insights']=document.getElementById('q2_insights').value.replace(/\W/g, ' ')//.replaceAll('"','').replaceAll('?',''); //q2
+  dict_insights['q3_insights']=document.getElementById('q3_insights').value.replace(/\W/g, ' ')//.replaceAll('"','').replaceAll('?',''); //q3
+  dict_insights['q5_insights']=document.getElementById('q5_insights').value.replace(/\W/g, ' ')//.replaceAll('"','').replaceAll('?',''); //q3
+  dict_insights['q_attention_insights'] = document.getElementById('q_attention_insights').value.replace(/\W/g, ' ')
+
+  error_src = {}
+    error_src["Action_error"] = document.getElementById('Action_error').checked
+    error_src["Problem_error"] = document.getElementById('Problem_error').checked
+  dict_insights['q6_insights'] = error_src
+
+  //q6: select preconditions 
+  list_selected=document.querySelectorAll('.selected')
+  list_preconditions=[]
+
+  if (list_selected.length>0){
+    for (i=0;i<list_selected.length;i++){
+      list_preconditions.push(document.querySelectorAll('.selected')[i].id)
+    }
+    dict_insights['q7_insights']=list_preconditions
+  }
+  else{
+    dict_insights['q7_insights']=[]
+  }
+
+
+  //q7: select states  
+  list_selected_states=document.querySelectorAll('.selected_state')
+  list_states=[]
+
+  if (list_selected_states.length>0){
+    for (i=0;i<list_selected_states.length;i++){
+      list_states.push(document.querySelectorAll('.selected_state')[i].id)
+    }
+    dict_insights['q8_insights']=list_states
+  }
+  else{
+    dict_insights['q8_insights']=[]
+  }
+
+//   multi_list_solution = d3.select('#plan_preview_list').selectAll('li').data()
+
+// //   var e = document.getElementById("insight_select1");
+// //   var value1 = e.options[e.selectedIndex].value;
+// //   var e = document.getElementById("insight_select2");
+// //   var value2 = e.options[e.selectedIndex].value;
+// //   var e = document.getElementById("insight_select3");
+// //   var value3 = e.options[e.selectedIndex].value;
+// //   list_solution=[]
+// //   list_solution.push(value1)
+// //   list_solution.push(value2)
+// //   list_solution.push(value3)
+// //   dict_insights['q8_insights']=list_solution
+//   dict_insights['q8_insights']=multi_list_solution
+
+  console.log(dict_insights)
+  d3.json(window.location.href+'/../explanation_ended/'+JSON.stringify(dict_insights)).then(function(url){
+        //Send info and replace url
+        window.location.replace(url)
+    })
+})
+
+
+var counter=1
+d3.selectAll("#start_btn_menu").on("click",function(){
+    d3.select('#next_btn_menu').style("display","block")
+    d3.select('#start_btn_menu').style("display","none")
+    d3.selectAll("#question0").style("display","none")
+    d3.selectAll("#question1").style("display","block")
+})
+
+d3.selectAll("#next_btn_menu").on("click",function(){
+  //remove all questions and buttons
+
+  counter++
+  console.log(counter)
+  d3.selectAll(".user_question").style("display","none")
+  d3.selectAll("#question"+counter).style("display","block")
+  if (counter>1){
+    d3.selectAll("#prev_btn_menu").style("display","block")
+
+  }
+  if (counter==8){
+    d3.selectAll("#next_btn_menu").style("display","none")
+    d3.selectAll("#finish_btn").style("display","block")
+
+  }
+  else{
+    d3.selectAll("#next_btn_menu").style("display","block")
+    d3.selectAll("#finish_btn").style("display","none")
+
+  }
+})
+
+d3.selectAll("#prev_btn_menu").on("click",function(){
+  //remove all questions and buttons
+  counter--
+  console.log(counter)
+  d3.selectAll(".user_question").style("display","none")
+  d3.selectAll("#question"+counter).style("display","block")
+  if (counter<2){
+    d3.selectAll("#prev_btn_menu").style("display","none")
+
+  }
+  if (counter==8){
+    d3.selectAll("#next_btn_menu").style("display","none")
+    d3.selectAll("#finish_btn").style("display","block")
+
+  }
+  else{
+    d3.selectAll("#next_btn_menu").style("display","block")
+    d3.selectAll("#finish_btn").style("display","none")
+
+  }
+})
+
+
+d3.json(window.location.href+'/../get_info').then(function(preload_data){
+    if(preload_data.domain==false){
+        console.log("remove hub precondition")
+        d3.selectAll('#dom_change').remove()
+    }
+})
+
+d3.selectAll(".precondition")
+        .on("dblclick",function(){
+            this.setAttribute("bgcolor","white")
+            this.setAttribute("class","")       
+        })
+        .on("click",function(){
+            this.setAttribute("bgcolor","#88aaaa")
+            this.setAttribute("class","selected")
+        })
+        .on("mouseenter",function(){
+            d3.select(this).style("cursor","pointer")
+            this.setAttribute("bgcolor","#88aaaa")
+
+        })
+        .on("mouseleave",function(){
+            if (this.getAttribute("class")!="selected"){
+              this.setAttribute("bgcolor","white")
+            }
+        })
+
+d3.selectAll('.start_state')
+        .on("dblclick",function(){
+            d3.select(this).style("background-color","white")
+            this.setAttribute("class","")       
+        })
+        .on("click",function(){
+            d3.select(this).style("background-color","#88aaaa")
+            this.setAttribute("class","selected_state")
+        })
+        .on("mouseenter",function(){
+            d3.select(this).style("cursor","pointer")
+            d3.select(this).style("background-color","#88aaaa")
+
+        })
+        .on("mouseleave",function(){
+            if (this.getAttribute("class")!="selected_state"){
+              d3.select(this).style("background-color","white")
+            }
+        })
+
+// document.getElementById('add_insight_button').addEventListener('click',add_insight)
+
+//function to add an action to the plan preview
+function add_insight(){
+
+    // sel1 = d3.select('#insight_select1');
+    // sel2 = d3.select('#insight_select2');
+    // sel3 = d3.select('#insight_select3');
+
+    var text=""
+    //adding names of all selected inputs to text
+    input_list = []
+    for(i=1;i<4;i++){
+        console.log("i is ",i)
+        text += document.getElementById('insight_select'+i).value +'  ';
+        console.log("text is ",text)
+
+        // text += document.getElementById('insight_select'+i).value +', ';
+        input_list.push(document.getElementById('insight_select'+i).value)
+    }
+    // text = text.slice(0, text.length-2);
+    // action_stack.push(text)
+    div = d3.select('#plan_preview_list')
+    sel = div.append('li').data([input_list,0]).attr('class','action row').html(text).attr('draggable','true')
+    sel.append('span').attr('class','edit').html('<i class="material-icons">close</i>').on('click',function(){d3.select(this.parentNode).remove()})
+        // .attr('data-step',5).attr('data-intro',"Clicking this button allows you to edit the action and its parameters")
+    // sel.append('span').attr('class','close').html('x').on('click',function(){d3.select(this.parentNode).remove()})
+    // sel.append('span').attr('class','edit').html('<i class="material-icons">mode_edit</i>').on('click', edit_action)
+        // function(d){
+        //     //is there a need to create a new layout for editing? Adding new action and draggin can also work.
+        // })
+        //.append('button').html('X').style('margin-right','0px').on('click',function(){d3.select(this.parentNode).remove()})
+
+    // test();
+}
+
+function edit_action(inputs){
+    step = d3.select(this.parentNode)
+    console.log(inputs, step.data())
+    action = step.html().split('(')[0]
+    d3.select('#edit_modal_name').html(step.html().split('<')[0])
+
+    //update selected action in edit modal
+    document.getElementById('edit_action_select').value=action;
+    update_edit()
+
+    //update selected inputs in edit modal
+    for(i=0;i<sel.data()[0].inputs.length;i++){
+        document.getElementById('edit_input_select'+i).value=inputs[i];
+    }
+    $('#edit_modal').modal('show')
+    d3.select('#edit_action_confirm').on('click', function(){
+        sel = d3.select('#edit_action_select option:checked');
+        text = sel.attr('value')+'(';
+        //adding names of all selected inputs to text
+        input_list = []
+        for(i=0;i<sel.data()[0].inputs.length;i++){
+            text += document.getElementById('edit_input_select'+i).value +', ';
+            input_list.push(document.getElementById('edit_input_select'+i).value)
+        }
+        text = text.slice(0, text.length-2);
+        text+=')'
+        console.log(step.node())
+        step = d3.select(step.node()).data([input_list])
+        step.html(text)
+        step.append('span').attr('class','edit').html('<i class="material-icons">close</i>').on('click',function(){d3.select(this.parentNode).remove()})
+        // sel.append('span').attr('class','close').html('x').on('click',function(){d3.select(this.parentNode).remove()})
+        step.append('span').attr('class','edit').html('<i class="material-icons">mode_edit</i>').on('click', edit_action)
+        $('#edit_modal').modal('hide')
+
+        test();
+    })
+}
+</script>
+
+<script type = "text/javascript" src="../static/js/explanation.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

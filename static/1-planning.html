@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan Editor - Planning</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <!-- <script src='static/js/jquery-sortable.js'></script> -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Planning
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container">
+    <h2 ><a id="What_is_Planning_1"></a>What is Planning?</h2>
+    <h4 ><a id="Thinking_before_acting_2"></a>Thinking before acting!</h4>
+    <img src="/static/help_images/chatbot other hand edite.png" alt="Rob" width="200"
+         height="200" style='float: right;'>
+    <p>Classical planning is the task of coming up with a sequence of actions that will achieve a particular goal. Within the realm of AI, planning is mostly concerned with developing “agents” that can come up with such actions on their own.</p>
+    <p>In particular, a planning problem consists of an initial state (where we start in the environment), a goal state (where we want to go in the environment), and a set of actions that we can execute to transistion between states in the environment. The available set of actions are specific to each planning problem and are described in the <em>Domain</em> of the planning problem.</p>
+    <p>A solution to a planning problem, called a <em>plan</em>, is a sequence of actions, which when executed would allow us to transition from the initial states to the goal states.</p>
+    <!-- <p>The cost of a plan is measured by its plan length, which is the number of actions it contains. The shortest plan (cost-minimal) for a given problem is called an <em>optimal</em> plan.</p> -->
+    <h2 ><a id="Components_of_a_Planning_Task_11"></a>Components of a Planning Task.</h2>
+    <p>Suppose we have a planning problem which involves telling a robot to pick up a box from a table. We will use this example to describe the components of a planning task:</p>
+    <ul>
+    <li><strong>Objects</strong>: Things in the world that interest us, e.g, <em>box B</em>, <em>table T</em>, <em>robot R</em></li>
+    <li><strong>Predicates</strong>: Properties of objects that we are interested in; Can be <em>True</em> or <em>False</em>.<br>
+    For example, <em>ontable(B, T)</em> could tell us that box <em>B</em> is on table <em>T</em>, and <em>free(R)</em> could tell us the robots hand is free</li>
+    <li><strong>Initial states</strong>: The states of the world that we start in. If initially the box is on the table and the robot’s hand is free, the initial state can be represented as a combination of <em>ontable(B, T)</em> and <em>free(R)</em>.</li>
+    <li><strong>Goal states</strong>: The states of the world that we want to reach. In the example, the goal state can be <em>holding(B, R)</em>. In other words, the box should be in the robot’s hand after the plan is executed.</li>
+    <li><strong>Actions</strong>: Ways of changing the state of the world. An action <em>Pick-up(B, T, R)</em> may be used to say that we want the robot <em>R</em> to pick up box <em>B</em> from table <em>T</em>.<br>
+    <!-- Each action comprises of the following conditions:<br> -->
+    Each action comprises of the following some preconditions to execute<br>
+    i) <strong>Precondtions</strong>: States that have to be <em>True</em> in order to exectute the action. For <em>Pick-up(B, T, R)</em>, the box <em>B</em> should be on the table <em>T</em>, and the robot’s hand should be free. Hence, this action will have the preconditions <em>ontable(B, T)</em> and <em>free(R)</em>. Since these conditions are satisfied in the initial state, this action is possible.<br>
+    <!-- ii) <strong>Addition effects</strong>: States that become <em>True</em> after we execute the action. For <em>Pick-up(B, T, R)</em>, the action will result in <em>holding(B, R)</em> being <em>True</em> after the action is completed.<br>
+    iii) <strong>Deletion effects</strong>: States that become <em>False</em> after we execute the action. For <em>Pick-up(B, T, R)</em>, <em>ontable(B, T)</em> and <em>free(R)</em> will be <em>False</em> after the action is completed.</li> -->
+    </ul>
+    <p>Then, the <strong>plan</strong> for this problem would be just one step long: <em>P</em> = { <em>Pick-up(B, T, R)</em> }. The reason is that, the initial state satisfies the preconditions of action <em>Pick-up(B, T, R)</em>, thus allowing us to execute it. After executing <em>Pick-up(B, T, R)</em>, we end up at the state, <em>holding(B, R)</em>, which is the goal state.</p>
+    <p>In other more complicated problems, the plan may involve multiple steps, each acting upon the state after the previous action, to cumulatively result in the goal.</p>
+    <a type="button" class="btn btn-primary edit2" id='next_btn' href='../2/' >Next</a>
+    <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../'>Prev</a>
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

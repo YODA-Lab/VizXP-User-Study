@@ -1,0 +1,4 @@
+Explanation >> l-airplane-has-add-effect-in ?o ?a\
+Explanation >> m-truck-has-precondition-in ?l-from ?l\
+Explanation >> u-airplane-has-precondition-in ?o ?a\
+Explanation >> u-truck-has-precondition-in ?o ?t}

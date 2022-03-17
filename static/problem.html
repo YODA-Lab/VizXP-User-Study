@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan Editor - Problem</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+    
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Planning
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container">
+    <h2  ><a id="Problem_60"></a>Problem</h2>
+    <img src="/static/help_images/Chatbot standing edited.png" alt="Rob" width="200"
+    height="250" style='float: right;'>
+    <p> Now that all that is done, we can begin with the actual task!</p>
+    <p >Below, you are given the description for a logistics problem that uses this domain, and you will be asked to create a plan using the actions described in the domain to transport a package to the goal.</p>
+    <h3  ><a id="Start_state_63"></a>Start state:</h3>
+    <p >2 cities: <code>city1</code>, <code>city2</code><br>
+    4 locations: <code>location1</code>, <code>location2</code>, <code>location3</code>, <code>location4</code></p>
+    <ul>
+    <li ><code>location1</code>, <code>location2</code> are in <code>city1</code></li>
+    <li ><code>location3</code>, <code>location4</code> are in <code>city2</code></li>
+    <li ><code>location1</code>, <code>location3</code> are hubs</li>
+    </ul>
+    <p >2 airplanes: <code>airplane1</code>, <code>airplane2</code></p>
+    <ul>
+    <li ><code>airplane1</code> is in <code>location3</code></li>
+    <li ><code>airplane2</code> is in <code>location1</code></li>
+    </ul>
+    <p >2 trucks: <code>truck1</code>, <code>truck2</code></p>
+    <ul>
+    <li ><code>truck1</code> is in <code>location4</code></li>
+    <li ><code>truck2</code> is in <code>location1</code></li>
+    </ul>
+    <p >1 package: <code>package1</code></p>
+    <ul>
+    <li ><code>package1</code> is in <code id='problem_change'>location3</code></li>
+    </ul>
+    <h3  ><a id="Goal_81"></a>Goal:</h3>
+    <p >Send <code>package1</code> to <code>location2</code></p>
+  <a type="button" class="btn btn-primary edit2" id='next_btn' href='../editor' >Next</a>
+  <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../5/'>Prev</a>
+
+</div>
+<script>
+    d3.json('../get_info').then(function(d){
+        if(d.problem==false){
+        d3.select('#problem_change').html("location1")
+    }
+    })
+</script>
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

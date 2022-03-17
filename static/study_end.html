@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explanation</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+    
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Submission
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container" style='font-size: large;'>
+    <p > 
+        Your answers have been recorded. You total payment including bonuses is <b>$<text id='final_amount'></text></b>
+        <br>
+        <strong>Base: </strong> $3.25
+        <br>
+        <strong>Task 1: </strong> $<text id='plan_creation'></text>
+        <br>
+        <strong>Task 2: </strong> $<text id = 'plan_correction'></text>
+        <br>
+        <br>
+        Please <b><a href=''>click here</a></b> or visit this Completion URL to complete your submission on Prolific:
+        <br>
+        
+        <br>
+        <b>Completion URL</b>:  NA
+        <!-- https://app.prolific.co/submissions/complete?cc=403BE320 -->
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    If you have any questions or would like to contact the Principal Investigator in the study to discuss this research, please message Dr. William Yeoh at <a href='mailto:wyeoh@wustl.edu'>wyeoh@wustl.edu</a></li>
+</div>
+  <!-- <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../5/'>Prev</a> -->
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+<script>
+    d3.json('store_end_time').then(function(d){
+        plan_creation = 0;
+        plan_correction =0;
+        console.log(d)
+        if(d.creation) plan_creation = 2
+        if(d.correction) plan_correction = 3
+        d3.select('#plan_creation').html(plan_creation+'.00')
+        d3.select('#plan_correction').html(plan_correction+'.00')
+        d3.select('#final_amount').html((3.25+plan_creation+plan_correction))
+        return 0;
+        })
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Supplement_VizXP_ICAPS22.pdf : Supplementary material for the main paper.
+user_study_data.csv : All data collected during the user study for the 170 participants we analyzed. We omit Prolific ID's for anonymity.
+combined_data.csv : A subset of the complete data containing relevant information in addition to the calculated comprehension scores.
+analysis.html : Contains the analysis used for the paper

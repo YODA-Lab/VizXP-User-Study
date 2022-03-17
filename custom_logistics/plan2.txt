@@ -1,0 +1,5 @@
+(l-airplane obj1 apn1 loc3 )
+(m-airplane apn1 loc3 loc1 )
+(l-truck obj1 tru2 loc1 )
+(m-truck tru2 loc1 loc2 cit1 )
+(u-truck obj1 tru2 loc2 )

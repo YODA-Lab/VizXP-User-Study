@@ -1,0 +1,5 @@
+{
+    "viz_type":"text",
+    "domain" : "custom_logistics/agent2.pddl",
+    "problem_file" : "custom_logistics/prob1.pddl"
+}

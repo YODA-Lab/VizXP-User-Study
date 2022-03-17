@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explanation</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Planning and Visualization
+        </h1>
+        <p></p>
+    </div>
+
+<div id="terms_and_consent" style="padding-left:75px; padding-right:75px; line-height: 24px;" class="container">
+    <br>
+    <p>We are interested in understanding how visualizations can assist in better understanding different taxonomies of explanations stemming from Classical Planning problems. You will first be presented with information relevant to Classical Planning and then asked to complete two tasks as well as answer some questions about them.</p>
+    <br>
+
+    <p style='font-size: large;'>
+      TERMS OF SERVICE
+    </p>
+    <ul>
+        <!--  as base pay, with an additional $4.00 as bonus should you complete the task successfully.  -->
+        <li>The study should take around 30-35 minutes to complete, and you will receive <b>$3.25</b> as base pay for your participation. There will be two tasks, Task 1 and Task 2. Giving the correct answer/responses for <b> Task 1</b> will award you a bonus of <b>$2.00</b> and giving the correct answer/responses for <b> Task 2</b> will award you a bonus of <b>$3.00</b>. Your participation in this research is voluntary. </li>
+        <li>You have the right to withdraw at any point during the study, for any reason, and without prejudice. If you do not wish to participate in this study, please return your submission on Prolific by selecting the ‘Stop without completing’ button.</li>
+        <li>If you would like to contact the Principal Investigator in the study to discuss this research, please message Dr. William Yeoh at <a href='mailto:wyeoh@wustl.edu'>wyeoh@wustl.edu</a></li>
+    </ul>
+
+    <br>
+
+    <p style='font-size: large;'>
+      CONSENT FORM
+    </p>
+
+
+    <p>By clicking the button bellow, you acknowledge that your participation in the study is voluntary, you are at least 18 years of age, and that you are aware that you may choose to terminate your participation in the study at any time for any reason.</p>
+
+    <br>
+    <input type="checkbox" id="consent" name="consent" value="consent">
+    <label for="consent">"I am 18 years or above, and I have read and understood the statements above"</label><br><br>
+
+    <a id='Submit' class="btn btn-primary edit2" value="Submit">Submit</a>
+
+</div>
+
+<div id="demographics" style="display:none; padding-left:75px; padding-right:75px; line-height: 24px;" class="container">
+
+    <br>
+    <label for="User ID">Please enter your Prolific ID:</label>
+    <br>
+    <input type="text" id="UserID" name="UserID"><br><br>
+
+    <label for="age">Age: </label>
+    <br>
+    <input type="text" id="age" name="age"><br><br>
+
+    <h5><b>Gender: &nbsp</b> </h5>
+    <input type="radio"  name="gender" value="female">
+    <label for="female">Female</label>
+    <br>
+    <input type="radio"  name="gender" value="male">
+    <label for="female">Male</label>
+    <br>
+    <input type="radio"  name="gender" value="other">
+    <label for="other">Other</label>
+    <br><br>
+
+    <h5><b>Highest educational qualifications: &nbsp</b> </h5>
+    <input type="radio" id="college" name="education" value="college">
+    <label for="college">Undergraduate degree</label>
+    <br>
+    <input type="radio" id="gradschool" name="education" value="gradschool">
+    <label for="gradschool">Graduate degree</label>
+    <br>
+    <input type="radio" id="other" name="education" value="other">
+    <label for="other">Other</label>
+    <br><br>
+
+    <h5><b>Do you have a background in computer science? &nbsp</b> </h5>
+    <input type="radio" id="yes" name="cs_bg" value="yes">
+    <label for="yes">Yes</label>
+    <br>
+    <input type="radio" id="no" name="cs_bg" value="no">
+    <label for="no">No</label>
+    <br><br>
+
+    <h5><b>Do you have any experience with Artificial Intelligence and/or Automated Planning? &nbsp</b> </h5>
+    <input type="radio" id="yes" name="plan_bg" value="yes">
+    <label for="yes">Yes</label>
+    <br>
+    <input type="radio" id="no" name="plan_bg" value="no">
+    <label for="no">No</label>
+    <br><br>
+
+    <input type="checkbox" id="background" name="background" value="background">
+    <label for="background">"The above answers are true to the best of my understanding"</label><br><br>
+
+
+    <a id='Submit2' class="btn btn-primary edit2" value="Submit">Submit</a>
+
+</div>
+
+<script>
+
+    d3.select('#Submit').on('click', function(d){
+        //show demographics form if checked
+        if (document.getElementById('consent').checked==true){
+            d3.selectAll("#demographics").style("display","block")
+            d3.selectAll("#terms_and_consent").style("display","none")
+        }
+
+        // uid = d3.select('#UserID').property('value')
+        // form_data = {}
+        // form_data["uid"] = uid;
+        // console.log(form_data)
+
+        // //Submitting data to back-end
+        // d3.json('/handle_form/'+JSON.stringify(form_data)).then(function(url){
+        //     window.location.replace(url)
+        // })
+    })
+    d3.select('#Submit2').on('click', function(d){
+        //show demographics form
+        d3.selectAll("#demographics").style.display="block"
+        d3.selectAll("#terms_and_consent").style.display="none"
+
+        uid = d3.select('#UserID').property('value')
+
+        age = d3.select('#age').property('value')
+
+        rbs = document.querySelectorAll('input[name="gender"]');
+        let selectedGender='';
+        for (const rb of rbs) {
+            if (rb.checked) {
+                selectedGender = rb.value;
+                break;
+            }
+        }
+
+        rbs = document.querySelectorAll('input[name="education"]');
+        let selectedEducation='';
+        for (const rb of rbs) {
+            if (rb.checked) {
+                selectedEducation = rb.value;
+                break;
+            }
+        }
+
+        rbs = document.querySelectorAll('input[name="cs_bg"]');
+        let selectedCsBg='';
+        for (const rb of rbs) {
+            if (rb.checked) {
+                selectedCsBg = rb.value;
+                break;
+            }
+        }
+
+        rbs = document.querySelectorAll('input[name="plan_bg"]');
+        let selectedPlanBg='';
+        for (const rb of rbs) {
+            if (rb.checked) {
+                selectedPlanBg = rb.value;
+                break;
+            }
+        }
+
+        form_data = {}
+        form_data["uid"] = uid;
+        form_data["age"] = age;
+        form_data["gender"] = selectedGender
+        form_data["education"] = selectedEducation
+        form_data["cs_background"] = selectedCsBg
+        form_data["planning_background"] = selectedPlanBg
+        console.log(form_data)
+        if(uid!='' && age!='' && selectedGender!='' && selectedEducation!='' && selectedCsBg!='' && selectedPlanBg!='' && document.getElementById('background').checked==true){
+            //Submitting data to back-end
+            d3.json('/handle_form/'+JSON.stringify(form_data)).then(function(url){
+                window.location.replace(url)
+            })
+        }
+        console.log("HUH")
+    })
+</script>
+  <!-- <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../5/'>Prev</a> -->
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

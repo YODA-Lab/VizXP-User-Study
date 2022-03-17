@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plan Editor - Domain</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+    
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Planning
+        </h1>
+        <p></p> 
+    </div>
+
+<div class="container">
+    <p > <h3>Mini-quiz</h3><br>
+        Being able to understand predicates is neceessary for understanding planning. Answer the questions that follow to ensure you understand the concepts presented<br>
+        Q1. What does <code>is-airplane(airplane1)</code> mean?</p>
+        <!-- <ol>
+        <li >airplane is an airplane1</li>
+        <li >airplane1 is an airplane</li>
+        <li ><span class='li_hl'>airplane1 is in city1</span> </li>
+        <li >airplane1 is not an airplane<br></li>
+        (hint: the answer is #2)
+        </ol> -->
+        <!-- <br> -->
+        <span class="q_incorrect"><input type="radio" name="q1" value="a"> airplane1 is not an airplane</span> <br>
+        <span class="q_incorrect"><input type="radio" name="q1" value="b" > airplane is an airplane1</span><br>
+        <span class="q_correct"><input type="radio" name="q1" value="c" > airplane1 is an airplane</span><br>
+        <span class="q_incorrect"><input type="radio" name="q1" value="d" > airplane1 is in city1</span><br>
+        <br>
+        <p >Q2. What does <code>in(package1, location1)</code> mean?</p>
+        <!-- <ol> -->
+        <span class="q_incorrect" ><input type="radio" name="q2" value="a"> location1 is in package1</span><br>
+        <span class="q_incorrect" ><input type="radio" name="q2" value="b"> location1 and package1 are in a city</span><br>
+        <span class="q_correct" ><input type="radio" name="q2" value="c"> package1 is in location1</span><br>
+        <span class="q_incorrect" ><input type="radio" name="q2" value="d"> package1 is not in location1<br></span><br>
+        <!-- (hint: the answer is #3) -->
+        <!-- </ol> -->
+  <a type="button" class="btn btn-primary edit2" id='check_btn' >Check</a>
+  <a type="button" class="" id='next_btn' href='../4/' ></a>
+  <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../2/'>Prev</a>
+
+</div>
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+<script>
+    document.getElementById('check_btn').addEventListener('click', function(){
+        d3.select('#warning').remove()
+        d3.select('.container').append('h4').attr('id','warning').html('You must select an option for each question')
+        q1 = d3.select(d3.select('input[name="q1"]:checked').node().parentNode)
+        q1.attr('class',q1.attr('class')+'_hl')
+
+        q2 = d3.select(d3.select('input[name="q2"]:checked').node().parentNode)
+        q2.attr('class',q2.attr('class')+'_hl')
+
+        d3.selectAll('.q_correct').attr('class','q_correct_hl')
+
+        d3.select('#check_btn').remove()
+        d3.select('#warning').remove()
+
+        d3.select('.container').append('h4').attr('id','legend').html('Green highlighted answers are the correct ones')
+
+        d3.select('#next_btn').attr('class','btn btn-primary edit2').html('Next')
+    })
+</script>
+</html>

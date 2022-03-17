@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Explanation</title>
+
+
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- for drag and drop -->
+    <script type="text/javascript" src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!-- <script type="text/javascript" src="static/js/data.js"></script> -->
+    <!-- <script type="text/javascript" src="static/js/js-colormaps.js"></script> -->
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"  media="screen,projection"/> -->
+    
+
+
+</head>
+<body>
+
+    <div class=" text-center header">
+        <h1>Feedback
+        </h1>
+        <p></p> 
+
+    </div>
+<ol style="padding-left:200px;">
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I felt the visualization was useful in creating the plan.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert1" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert1" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert1" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert1" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert1" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">The visualization helped me understand the execution of the plan.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert2" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert2" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert2" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert2" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert2" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I felt the visualization helped in understanding the difference in the plans.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert3" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert3" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert3" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert3" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert3" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I received the visualizations in a timely and efficient manner.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert4" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert4" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert4" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert4" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert4" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I found the various functions in this system well integrated.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert5" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert5" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert5" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert5" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert5" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I found the system easy to use.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert6" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert6" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert6" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert6" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert6" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">Please select option one here.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert_attention" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert_attention" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert_attention" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert_attention" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert_attention" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px"> I found the system unnecessarily complex.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert7" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert7" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert7" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert7" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert7" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I would imagine that most people would learn to use this system very quickly.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert8" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert8" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert8" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert8" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert8" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I needed to learn a lot of things before I could get going with this system.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert9" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert9" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert9" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert9" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert9" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I feel I understood the explanation presented by the system.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert10" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert10" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert10" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert10" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert10" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I feel the explanation presented helped me in identifying what was wrong in my original plan.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert11" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert11" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert11" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert11" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert11" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">I felt it was easy to modify and correct my plan in the Plan Correction task.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert12" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert12" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert12" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert12" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert12" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px"> I felt I needed the ability to test my plan in the Plan Correction task.</p>
+        <text style="font-size: 11px">&nbsp&nbsp strongly disagree &nbsp&nbsp&nbsp</text>
+        <input type="radio" id="1" name="likert13" value="1">
+        <label for="1">1</label>
+        <input type="radio" id="2" name="likert13" value="2">
+        <label for="2">2</label>
+        <input type="radio" id="3" name="likert13" value="3">
+        <label for="3">3</label>
+        <input type="radio" id="4" name="likert13" value="4">
+        <label for="4">4</label>
+        <input type="radio" id="5" name="likert13" value="5">
+        <label for="5">5</label>
+        <text style="font-size: 11px">&nbsp&nbsp&nbsp strongly agree &nbsp&nbsp</text>
+    </div>
+    </li>
+    <li><div style=" padding-top: 20px">
+        <p style="padding-bottom: 10px">Do you have any suggestions to improve the study or the system? Did you feel the need for any feature or assistance?</p>
+        <input type="text" id="open_feedback" name="open_feedback">
+    </div>  
+    </li>
+</ol>
+<div class="container">
+    <p style='font-size: large;'> 
+        
+    </p>
+    <a  type="button" class="btn btn-primary edit2" id='finish_btn'>Finish</a>
+
+</div>
+<script>
+    dict_likert={}
+    d3.selectAll("#finish_btn").on("click",function(){
+        dict_likert['q1']=document.querySelector('input[name="likert1"]:checked').value;
+        dict_likert['q2']=document.querySelector('input[name="likert2"]:checked').value;
+        dict_likert['q3']=document.querySelector('input[name="likert3"]:checked').value;
+        dict_likert['q4']=document.querySelector('input[name="likert4"]:checked').value;
+        dict_likert['q5']=document.querySelector('input[name="likert5"]:checked').value;
+        dict_likert['q6']=document.querySelector('input[name="likert6"]:checked').value;
+        dict_likert['q7']=document.querySelector('input[name="likert7"]:checked').value;
+        dict_likert['q8']=document.querySelector('input[name="likert8"]:checked').value;
+        dict_likert['q9']=document.querySelector('input[name="likert9"]:checked').value;
+        dict_likert['q10']=document.querySelector('input[name="likert10"]:checked').value;
+        dict_likert['q11']=document.querySelector('input[name="likert11"]:checked').value;
+        dict_likert['q12']=document.querySelector('input[name="likert12"]:checked').value;
+        dict_likert['q13']=document.querySelector('input[name="likert13"]:checked').value;
+        dict_likert['attention_check']=document.querySelector('input[name="likert_attention"]:checked').value;
+        dict_likert['q14']=document.getElementById('open_feedback').value.replace(/\W/g, ' ');
+
+        d3.json(window.location.href+'/../feedback_ended/'+JSON.stringify(dict_likert)).then(function(url){
+            //Send info and replace url
+            window.location.replace(url)
+        })
+    })
+    console.log(dict_likert)
+
+
+</script>
+  <!-- <a type="button" class="btn btn-primary edit2" id='prev_btn' href='../5/'>Prev</a> -->
+<!-- <script type = "text/javascript" src="static/js/script.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+</body>
+</html>

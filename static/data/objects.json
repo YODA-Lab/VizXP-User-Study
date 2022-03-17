@@ -1,0 +1,9 @@
+{
+    "truck":["truck1", "truck2"],
+    "plane":["airplane1","airplane2"],
+    "package":["package1"],
+    "location":["location1","location2","location3","location4","city1", "city2"],
+    "hub":["location1", "location3"],
+    "city":["city1", "city2"],
+    "place":["location1","location2","location3","location4"]
+}
