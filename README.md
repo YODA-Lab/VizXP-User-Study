@@ -8,6 +8,7 @@ To run this locally, use `python main.py (port)`, with an optional port argument
 ### Requirements 
 1. Python 3.7.4
 2. Flask 1.1.1
+
 An internet connection is also required to load the libraries used to display the front end.
 
 # VizXP
