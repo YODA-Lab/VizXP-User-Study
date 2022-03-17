@@ -1,6 +1,6 @@
 This repository contains the code for a prototype implementation for VizXP [link]() and the associated user study, as described in the paper.
 The results for the user study as well as supplementary material are also included in this repository.
-(VizXP: A Visualization Framework for Conveying Explanations to Users in Model Reconciliation Problems)
+(**VizXP: A Visualization Framework for Conveying Explanations to Users in Model Reconciliation Problems**)
 
 # Usage
 To run this locally, use `python main.py (port)`, with an optional port argument (default=5000). Then, visit http://127.0.0.1:(port)/ on your browser to run the user study. 
