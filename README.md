@@ -1,4 +1,4 @@
-This repository contains the code for a prototype implementation for VizXP [link]() and the associated user study, as described in the paper.
+This repository contains the code for a prototype implementation for VizXP [link](https://cpb-us-w2.wpmucdn.com/sites.wustl.edu/dist/b/810/files/2022/04/icaps22-vizxp.pdf) and the associated user study, as described in the paper.
 The results for the user study as well as supplementary material are also included in this repository.
 
 (**VizXP: A Visualization Framework for Conveying Explanations to Users in Model Reconciliation Problems**)
